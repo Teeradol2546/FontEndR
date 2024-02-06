@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Beautiful Books</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        td:nth-of-type(3){
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            margin: 0 8px;
+            padding: 8px;
+            /* border: 1px solid #d5826b; */
+            color: #d5826b;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+            
+            width: 15%;
+
+        }
+
+        a:hover {
+            background-color: #c08069;
+            color: #fff;
+        }
+
+        .create-link {
+            display: block;
+            text-align: center;
+            margin: 20px;
+        }
+        .vBTN{
+            text-decoration: none;
+            margin: 0 8px;
+            padding: 8px;
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+            text-align: center;
+        }
+        .vBTN:hover{
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        .uBTN{
+            text-decoration: none;
+            margin: 0 8px;
+            padding: 8px;
+            border: 1px solid #dede6b;
+            color: #dede6b;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .uBTN:hover{
+            background-color: #dede6b;
+            color: #fff;
+        }
+        .material-symbols-outlined{
+           
+        
+        }
+
+        .dbtn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Books</h1>
+    
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+        <% for(var i=0 ; i< books.length ; i++) { %>
+            <tr>
+                <td><%= books[i].title %></td>
+                <td><%= books[i].author %></td>
+                <td>
+                    <a class="vBTN" href="/book/<%= books[i].id %>">View</a>
+                    <a class="uBTN" href="/update/<%= books[i].id %>">Edit</a>
+                    <a class="dbtn" href="/delete/<%= books[i].id %>"><span class="material-symbols-outlined"> 
+                        close
+                        </span></a>
+                        
+                </td>
+            </tr>
+        <% } %>
+    </table>
+
+
+    <a class="vBTN" class="create-link" href="/create">Create New Book</a>
+
+
+</body>
+</html>
