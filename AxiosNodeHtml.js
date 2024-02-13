@@ -16,7 +16,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get("/", async (req, res) => {
     try {
-        const response = await axios.get(base_url + '/books');
+        const response = await axios.get(base_url + '/views/books');
         res.render("books", {books: response.data});
     } catch (err) {
         console.error(err);
@@ -26,7 +26,7 @@ app.get("/", async (req, res) => {
 
 app.get("/book/:id", async (req, res) => {
     try {
-        const response = await axios.get(base_url + '/books/' + req.params.id);
+        const response = await axios.get(base_url + '/views/books/' + req.params.id);
         res.render("book", {book: response.data});
     } catch(err) {
         console.error(err);
@@ -41,7 +41,7 @@ app.get("/create", (req, res) => {
 app.post("/create", async (req, res) => {
     try {
         const data = {title: req.body.title, author: req.body.author};
-        await axios.post(base_url + '/books', data);
+        await axios.post(base_url + '/views/books', data);
         res.redirect("/");
     } catch (err) {
         console.error(err);
@@ -63,7 +63,7 @@ app.get("/update/:id", async (req, res) => {
 app.post("/update/:id", async (req, res) => {
     try {
         const data = {title: req.body.title, author: req.body.author};
-        await axios.put(base_url + '/books/' + req.params.id, data);
+        await axios.put(base_url + '/views/books/' + req.params.id, data);
         res.redirect("/");
     } catch(err) {
         console.error(err);
@@ -73,7 +73,7 @@ app.post("/update/:id", async (req, res) => {
 
 app.get("/delete/:id", async (req, res) => {
     try {
-        await axios.delete(base_url + '/books/' + req.params.id);
+        await axios.delete(base_url + '/views/books/' + req.params.id);
         res.redirect("/");
     } catch(err) {
         console.error(err);
